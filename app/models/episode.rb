@@ -8,7 +8,7 @@
 #  url         :text
 #  topics      :text
 #  summary     :text
-#  length      :string
+#  duration    :string
 #  podcast_id  :integer
 #
 

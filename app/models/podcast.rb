@@ -6,7 +6,6 @@
 #  name       :string
 #  podcaster  :text
 #  blurb      :text
-#  url        :text
 #  image      :text
 #  genres     :text
 #  created_at :datetime

@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150206232256) do
     t.text    "url"
     t.text    "topics"
     t.text    "summary"
-    t.string  "length"
+    t.string  "duration"
     t.integer "podcast_id"
   end
 
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20150206232256) do
     t.string   "name"
     t.text     "podcaster"
     t.text     "blurb"
-    t.text     "url"
     t.text     "image"
     t.text     "genres"
     t.datetime "created_at"

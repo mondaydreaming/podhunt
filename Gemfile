@@ -32,6 +32,8 @@ group :development do
     gem 'meta_request'
     gem 'bcrypt', '~> 3.1.7'
     gem 'feedjira'
+    gem 'haml'
+    gem 'bootstrap-sass'
 end
 # Use ActiveModel has_secure_password
 

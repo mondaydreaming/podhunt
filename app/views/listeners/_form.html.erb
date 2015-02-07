@@ -1,0 +1,46 @@
+
+
+<% if @listener.errors.any? %>
+    <ol>
+        <% @listener.errors.full_messages.each do |msg|%>
+            <li><%= msg %></li>
+        <% end %>
+    </ol>
+
+<% end %>
+
+<%= form_for @listener do |f| %>
+
+    <%= f.label :firstname, "First name"%>
+    <%= f.text_field :firstname,  :autofocus => true, :class => 'form-control'%>
+
+    <%= f.label :lastname, "Last name" %>
+    <%= f.text_field :lastname, :class => 'form-control' %>
+
+    <%= f.label :username, "User name"  %>
+    <%= f.text_field :username, :class => 'form-control' %>
+
+    <%= f.label :dob, "Date of Birth" %>
+    <%= f.text_field :dob, :class => 'form-control' %>
+
+    <%= f.label :country, "Country" %>
+    <%= f.text_field :country, :class => 'form-control' %>
+
+    <%= f.label :email, "Email address" %>
+    <%= f.text_field :email, :class => 'form-control'%>
+
+    <%= f.label :interests, "Interests (please separate using commas)" %>
+    <%= f.text_field :interests, :class => 'form-control' %>
+
+    <%= f.label :image, "Profile photo"%>
+    <%= f.url_field :image, :class => 'form-control' %>
+
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password, :class => 'form-control' %>
+
+    <%= f.label :password_confirmation, "Confirm password" %>
+    <%= f.password_field :password_confirmation, :class => 'form-control' %>
+
+    <%= f.submit %>
+
+<% end %>

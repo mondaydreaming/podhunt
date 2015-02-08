@@ -1,6 +1,6 @@
 module ApplicationHelper
     def nav_menu
-        links = "<li>#{link_to("Home", root_path)}</li>"
+        links = "<li>#{link_to("Home", root_path)}</li><li>#{link_to("Search", podcasts_path)}</li>"
         if @current_listener.present?
             links += "<li>#{link_to("Log out", login_path, :method => :delete)} </li><li>#{link_to("Edit account", edit_listener_path(@listener.id))}</li>"
         else

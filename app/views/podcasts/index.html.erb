@@ -1,3 +1,8 @@
-<h1>Welcome</h1>
-<p>Find me in app/views/podcasts/index.html.erb</p>
- 
+<h1>Search for a new podcast</h1>
+    <%= form_tag podcasts_path do %>
+    <%= label_tag "Enter URL of podcast" %>
+    <%= text_field_tag :feed_url %>
+    <%= submit_tag "test" %>
+<% end %>
+
+<!-- ["http://feeds.thisamericanlife.org/talpodcast"] -->

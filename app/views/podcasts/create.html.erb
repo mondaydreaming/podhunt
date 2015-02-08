@@ -1,2 +1,5 @@
-<h1>Podcasts#reate</h1>
-<p>Find me in app/views/podcasts/reate.html.erb</p>
+<h1> <%= @podcast.title %> </h1>
+
+<audio src="<%= @podcast.entries[0].image %>" controls ></audio>
+
+<h3>Add podcast to collection</h3>

@@ -41,11 +41,14 @@ ActiveRecord::Schema.define(version: 20150206232256) do
   end
 
   create_table "podcasts", force: :cascade do |t|
-    t.string   "name"
-    t.text     "podcaster"
-    t.text     "blurb"
+    t.string   "title"
+    t.text     "feed_url"
+    t.text     "author"
+    t.text     "description"
+    t.text     "categories"
     t.text     "image"
-    t.text     "genres"
+    t.text     "last_modified"
+    t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

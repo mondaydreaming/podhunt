@@ -1,13 +1,2 @@
+<h3><%= button_to("Add podcast to collection", podcast_subscribe_path(@podcast.id)) %></h3>
 <%= render "show" %>
-
-<div>
-<h3>Latest episode</h3>
-    <h4> <%= @jirapodcast.entries[0].title %> </h4>
-
-    <audio src="<%= @jirapodcast.entries[0].image %>" controls ></audio>
-    
-    <p><%== @jirapodcast.entries[0].summary %></p>
-
-</div>
-
-    <h3><%= button_to("Add podcast to collection", podcast_subscribe_path(@newpodcast.id)) %></h3>

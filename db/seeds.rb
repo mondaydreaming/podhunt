@@ -10,6 +10,16 @@ p1 = Podcast.create(:title => 'The Moth', :author => 'PRX', :description => 'Mot
 p2 = Podcast.create(:title => 'This American Life', :author => 'Chicago Public Media & Ira Glass', :description => 'This American Life is a weekly public radio show, heard by 2.2 million people on more than 500 stations. Another 1.5 million people download the weekly podcast. It is hosted by Ira Glass, produced by Chicago Public Media, delivered to stations by PRX The Public Radio Exchange, and has won all of the major broadcasting awards.', :categories => 'Personal Journals',  :feed_url => 'http://feeds.thisamericanlife.org/talpodcast' )
 p3 = Podcast.create(:title => 'Serial', :author => 'TAL & WBEZ $ Serial', :description =>"Serial is a podcast from the creators of This American Life, and is hosted by Sarah Koenig. Serial tells one story - a true story - over the course of an entire season. Each season, we'll follow a plot and characters wherever they take us. And we won’t know what happens at the end until we get there, not long before you get there with us. Each week we bring you the next chapter in the story, so it's important to listen to the episodes in order, starting with Episode 1. ", :categories => 'Investigative Journalism', :feed_url => 'http://feeds.serialpodcast.org/serialpodcast')
 
-# e1 = Episode.create(:name => 'Moth one', :releasedate=> '2014-01-01', :url => 'http://feeds.themoth.org/themothpodcast', :topics => 'topic1', :summary => 'This is a summary of the moth episode one', :duration => '7:00')
-# e2 = Episode.create(:name => 'This American Life one', :releasedate=> '2014-01-02', :url => 'http://feeds.thisamericanlife.org/talpodcast', :topics => 'topic1', :summary => 'This is a summary of this American Life episode one', :duration => '58:00')
-# e3 = Episode.create(:name => 'Serial one', :releasedate=> '2014-01-05', :url => 'http://feeds.serialpodcast.org/serialpodcast', :topics => 'topic1', :summary => 'This is a summary of Serial episode one', :duration => '40:00')
+e1 = Episode.create(:title => 'Moth one', :published=> '2014-01-01', :url => 'http://feeds.themoth.org/themothpodcast', :topics => 'topic1', :summary => 'This is a summary of the moth episode one', :duration => '7:00')
+e2 = Episode.create(:title => 'This American Life one', :published=> '2014-01-02', :url => 'http://feeds.thisamericanlife.org/talpodcast', :topics => 'topic1', :summary => 'This is a summary of this American Life episode one', :duration => '58:00')
+e3 = Episode.create(:title => 'Serial one', :published=> '2014-01-05', :url => 'http://feeds.serialpodcast.org/serialpodcast', :topics => 'topic1', :summary => 'This is a summary of Serial episode one', :duration => '40:00')
+
+#associate podcasts and listeners
+p1.listeners << l1
+p2.listeners << l2
+p3.listeners << l3
+
+#associate episodes and podcasts
+p1.episodes << e1
+p2.episodes << e2
+p3.episodes << e3

@@ -1,8 +1,12 @@
-<h1>Search for a new podcast</h1>
-    <%= form_tag podcasts_path do %>
-    <%= label_tag "Enter URL of podcast" %>
-    <%= text_field_tag :feed_url %>
-    <%= submit_tag "test" %>
-<% end %>
-
-<!-- ["http://feeds.thisamericanlife.org/talpodcast"] -->
+<h1>My playlist</h1>
+<ul>
+    <% @podcasts.each do |podcast| %>
+    <li>
+        <%= link_to(podcast.title, podcast_path(podcast.id)) %> <%= button_to "Remove from playlist", podcast, :method => "delete", :data => { :confirm => "Are you sure?"} %>
+        <br>
+        <%= podcast.description %>
+        <br>
+        <br>
+    </li>
+    <% end %>
+</ul>

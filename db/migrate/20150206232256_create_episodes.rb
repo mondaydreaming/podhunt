@@ -1,8 +1,8 @@
 class CreateEpisodes < ActiveRecord::Migration
   def change
     create_table :episodes do |t|
-        t.text :name
-        t.date :releasedate
+        t.text :title
+        t.date :published
         t.text :url
         t.text :topics
         t.text :summary

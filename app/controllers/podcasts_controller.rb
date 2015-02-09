@@ -1,18 +1,26 @@
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.all
+    @podcasts = @current_listener.podcasts.all
+  end
+
+  def search
   end
 
   def create
     urls = params[:feed_url]
-    @podcast = Feedjira::Feed.fetch_and_parse urls
+    @jirapodcast = Feedjira::Feed.fetch_and_parse urls
 
-    Podcast.create(:title => @podcast.title , :feed_url => @podcast.feed_url, :author => @podcast.entries[0].author,
-      :description => @podcast.description,
-      :last_modified => @podcast.last_modified,
-      :url => @podcast.url)
+    # what happens the second time you search
+    @podcast = Podcast.create(:title => @jirapodcast.title, :feed_url => @jirapodcast.feed_url, :author => @jirapodcast.entries[0].author,
+      :description => @jirapodcast.description,
+      :last_modified => @jirapodcast.last_modified,
+      :url => @jirapodcast.url)
+  end
 
-    redirect_to(podcasts_path)
+  def subscribe
+    podcast = Podcast.find params[:id]
+    @current_listener.podcasts << podcast
+    redirect_to podcast
   end
 
   def new
@@ -21,26 +29,8 @@ class PodcastsController < ApplicationController
   end
 
   def show
-# Search on feedjira
-    @podcast = 
-
-
-    # podcast = Podcast.create 
-
-    # @podcast.title
-    # @podcast.url
-    # @podcast.entries
-
-    # @entry = podcast.entries.first
-    # @entry.title
-    # @entry.url
+    @podcast = Podcast.find params[:id]
   end
-
-  # def edit
-  # end
-
-  # def update
-  # end
 
   def destroy
     podcast = Podcast.find params[:id]
@@ -49,11 +39,8 @@ class PodcastsController < ApplicationController
   end
 
   private
-
   def podcast_params
     params.require(:podcast).permit(:title, :search, :feed_url, :author, :description, :categories)
   end
-
-
 
 end

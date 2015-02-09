@@ -14,7 +14,11 @@
     <% @podcast.messages.each do |message| %>
     <li>"<%= message.comment %>" 
         posted at "<%= message.created_at %>" 
-        by "<%= message.listener_id %>
+        by "<%= message.listener_id %>"
+        
+        <% if message.id == @current_listener.id %>
+            <% button_to("Delete post", podcast_messages_path(@podcast), @podcast.message, :method =>"delete", :data => {:confirm => "Are you sure?"}) %>
+        <% end %>
     </li>
     <% end %>
 </ul>

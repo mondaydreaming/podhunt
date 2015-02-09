@@ -28,5 +28,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    message = Message.find params[:id]
+    message.destroy
+    redirect_to(podcast_messages_path)
+
   end
 end

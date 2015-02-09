@@ -35,6 +35,8 @@ group :development do
     gem 'haml'
     gem 'bootstrap-sass'
 end
+
+gem 'rails_12factor', group: :production
 # Use ActiveModel has_secure_password
 
 # Use Unicorn as the app server

@@ -2,9 +2,11 @@
 
 <h1>Welcome <%= @current_listener.try(:firstname) %></h1>
 
-<% @listener.each do |listener| %>
-    <%= listener.username %>
+<ul>
+    <% @listener.each do |listener| %>
+    <li><%= link_to(listener.username, listener_path(listener.id)) %></li>
     <% listener.podcasts.each do |podcast| %>
-        <%= podcast.title %>
-        <% end %>
-<% end %>
+            <li><%= podcast.title %></li>
+            <% end %>
+    <% end %>
+</ul>

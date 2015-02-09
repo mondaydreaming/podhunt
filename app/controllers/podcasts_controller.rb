@@ -14,7 +14,16 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.create(:title => @jirapodcast.title, :feed_url => @jirapodcast.feed_url, :author => @jirapodcast.entries[0].author,
       :description => @jirapodcast.description,
       :last_modified => @jirapodcast.last_modified,
-      :url => @jirapodcast.url)
+      :url => @jirapodcast.url, :entries => @jirapodcast.entries)
+
+    @jirapodcast.entries.each do |ep|
+      @podcast.episodes.create(
+        :title => ep.title,
+        :published => ep.published,
+        :url => ep.image,
+        :summary => ep.summary
+        )
+    end
   end
 
   def subscribe
@@ -30,6 +39,7 @@ class PodcastsController < ApplicationController
 
   def show
     @podcast = Podcast.find params[:id]
+    # @episode = Episode.where(podcast_id = @podcast.id)
   end
 
   def destroy
@@ -40,7 +50,7 @@ class PodcastsController < ApplicationController
 
   private
   def podcast_params
-    params.require(:podcast).permit(:title, :search, :feed_url, :author, :description, :categories)
+    params.require(:podcast).permit(:title, :published, :feed_url, :author, :description, :categories, :entries)
   end
 
 end

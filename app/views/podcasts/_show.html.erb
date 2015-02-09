@@ -6,4 +6,13 @@
 <% if @podcast.try(:categories) %>
     <p><em>Categories: </em><%= @podcast.categories %></p>
     <% end %>
-    </div>
+</div>
+
+<h3>Latest episodes</h3>
+<div>
+<% @podcast.episodes.each do |ep| %>
+    <h4><%= ep.title %></h4>
+    <audio src="<%= ep.url %>" controls ></audio>
+    <p><%== ep.summary %></p>
+<% end %>
+</div>

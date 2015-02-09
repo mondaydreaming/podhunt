@@ -1,3 +1,12 @@
 <!-- This is the equivalent of a homepage -->
 
 <h1>Welcome <%= @current_listener.try(:firstname) %></h1>
+
+<ul>
+    <% @listener.each do |listener| %>
+    <li><%= link_to(listener.username, listener_path(listener.id)) %></li>
+    <% listener.podcasts.each do |podcast| %>
+            <li><%= podcast.title %></li>
+            <% end %>
+    <% end %>
+</ul>

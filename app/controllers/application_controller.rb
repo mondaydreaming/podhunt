@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
             @current_listener = Listener.find_by :id =>session[:listener_id]
         end
         session[:listener_id] = nil unless @current_listener.present?
-        @listener= Listener.find session[:listener_id] if session[:listener_id].present?
     end
 
 end

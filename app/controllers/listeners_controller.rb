@@ -1,4 +1,19 @@
 class ListenersController < ApplicationController
+
+  def following
+    @title = "Following"
+    @listener  = listener.find(params[:id])
+    @listeners = @listener.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @listener  = listener.find(params[:id])
+    @listeners = @listener.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
   def index
     @listener = Listener.all
   end

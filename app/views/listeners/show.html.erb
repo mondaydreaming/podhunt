@@ -1,4 +1,29 @@
 <h2><%= @listener.username %></h2>
+
+<% if @current_listener.following?(@listener) %>
+
+    <%= form_for(@current_listener.active_relationships.find_by(followed_id: @listener.id),
+                 html: { method: :delete }) do |f| %>
+      <%= f.submit "Unfollow", class: "btn" %>
+    <% end %>
+
+<% else %>
+
+    <%= form_for(@current_listener.active_relationships.build) do |f| %>
+      <div><%= hidden_field_tag :followed_id, @listener.id %></div>
+      <%= f.submit "Follow", class: "btn btn-primary" %>
+    <% end %>
+
+<% end %>
+
+<section class="stats">
+    <% @listener ||= @current_listener %>    
+    <p> Followers: <%= @listener.followers.count %> </p>
+    <p> Following: <%= @listener.following.count %></p>
+    <!-- ideally have links that will show who the followers/ followed are-->
+</section>
+
+
 <div>
     <% @listener.podcasts.each do |podcast| %>
         <em><%= podcast.title %></em>

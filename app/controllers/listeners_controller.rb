@@ -1,5 +1,6 @@
 class ListenersController < ApplicationController
   def index
+    @listener = Listener.all
   end
 
   def create
@@ -16,7 +17,7 @@ class ListenersController < ApplicationController
   end
 
   def edit
-    @listener = Listener.find params[:id]
+    @listener = @current_listener
   end
 
   def show
@@ -24,13 +25,13 @@ class ListenersController < ApplicationController
   end
 
   def update
-    listener = Listener.find params[:id]
+    listener = @current_listener
     listener.update listener_params
     redirect_to listener
   end
 
   def destroy
-    listener = Listener.find params[:id]
+    listener = @current_listener
     listener.destroy
     redirect_to listeners_path
   end

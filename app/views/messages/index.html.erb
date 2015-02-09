@@ -1,0 +1,26 @@
+<h2>Latest discussion on <%= @podcast.title %></h2>
+
+<% if @message.present? %>
+    <% if @message.errors.any? %>
+        <% @message.errors.full_messages.each do |err| %>
+        <p class= "error"> <%= err %> <p class= "error"> 
+        <% end %>
+    <% end %>    
+<% end %>
+
+<%= render :partial => "create" %>
+    
+<ul>
+    <% @podcast.messages.each do |message| %>
+    <li>"<%= message.comment %>" 
+        posted at "<%= message.created_at %>" 
+        by "<%= message.listener_id %>"
+        
+        <% if message.id == @current_listener.id %>
+            <% button_to("Delete post", podcast_messages_path(@podcast), @podcast.message, :method =>"delete", :data => {:confirm => "Are you sure?"}) %>
+        <% end %>
+    </li>
+    <% end %>
+</ul>
+
+<!-- how do you render the listener name? Also not get it to render anything when you haven't posted-->

@@ -1,2 +1,10 @@
-<h1>Listeners#show</h1>
-<p>Find me in app/views/listeners/show.html.erb</p>
+<h2><%= @listener.username %></h2>
+<div>
+    <% @listener.podcasts.each do |podcast| %>
+        <em><%= podcast.title %></em>
+        <br>
+        <%= podcast.description %>
+        <br>
+        <br>
+    <% end %>
+</div>

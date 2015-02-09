@@ -1,3 +1,12 @@
-<h1>Welcome</h1>
-<p>Find me in app/views/podcasts/index.html.erb</p>
- 
+<h1>My playlist</h1>
+<ul>
+    <% @podcasts.each do |podcast| %>
+    <li>
+        <%= link_to(podcast.title, podcast_path(podcast.id)) %> <%= button_to "Remove from playlist", podcast, :method => "delete", :data => { :confirm => "Are you sure?"} %>
+        <br>
+        <%= podcast.description %>
+        <br>
+        <br>
+    </li>
+    <% end %>
+</ul>

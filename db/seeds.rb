@@ -1,6 +1,7 @@
 Listener.destroy_all
 Podcast.destroy_all
 Episode.destroy_all
+Message.destroy_all
 
 l1 = Listener.create(:firstname => 'Michael', :lastname => 'Joyce', :username =>'Bambi', :password => 'chicken', :password_confirmation => 'chicken', :dob => '1988-01-01', :country => 'Australia', :email => 'michael@ga.com.au', :interests => 'food, sports', :image => 'http://wundergroundmusic.com/wp-content/uploads/2014/10/Smiling-Man-4.jpg')
 l2 = Listener.create(:firstname => 'Katherine', :lastname => 'Hurley', :username =>'Keepfishing', :password => 'chicken', :password_confirmation => 'chicken', :dob => '1990-01-01', :country => 'Australia', :email => 'katherine@ga.com.au', :interests => 'food, tv shows', :image => 'http://goo.gl/vUiu7c')
@@ -14,6 +15,10 @@ e1 = Episode.create(:title => 'Moth one', :published=> '2014-01-01', :url => 'ht
 e2 = Episode.create(:title => 'This American Life one', :published=> '2014-01-02', :url => 'http://feeds.thisamericanlife.org/talpodcast', :topics => 'topic1', :summary => 'This is a summary of this American Life episode one', :duration => '58:00')
 e3 = Episode.create(:title => 'Serial one', :published=> '2014-01-05', :url => 'http://feeds.serialpodcast.org/serialpodcast', :topics => 'topic1', :summary => 'This is a summary of Serial episode one', :duration => '40:00')
 
+m1 = Message.create(:comment => "This is my favourite podcast", :podcast_id => "1")
+m2 = Message.create(:comment => "I hate this podcast and evey episode in it" , :podcast_id => "2")
+m3 = Message.create(:comment => "comment paragraph blah blah blah " , :podcast_id => "3")
+
 #associate podcasts and listeners
 p1.listeners << l1
 p2.listeners << l2
@@ -23,3 +28,12 @@ p3.listeners << l3
 p1.episodes << e1
 p2.episodes << e2
 p3.episodes << e3
+
+# associate messages and episodes
+p1.messages << m1
+p2.messages << m2
+p3.messages << m3
+
+
+
+

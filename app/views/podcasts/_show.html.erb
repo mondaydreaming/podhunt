@@ -8,8 +8,9 @@
     <% end %>
 </div>
 
+<h4><%= link_to("Join the conversation",podcast_messages_path(@podcast.id)) %></h4>
+
 <h3>Latest episodes</h3>
-<div>
 <% @podcast.episodes.each do |ep| %>
     <h4><%= ep.title %></h4>
     <audio src="<%= ep.url %>" controls ></audio>

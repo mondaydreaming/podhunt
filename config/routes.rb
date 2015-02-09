@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  resources :users
+
   root :to => 'listeners#index'
-  resources :listeners
+  resources :listeners do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :podcasts do
     resources :messages
   end
@@ -11,5 +18,6 @@ Rails.application.routes.draw do
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
+  resources :relationships,       only: [:create, :destroy]
 
 end

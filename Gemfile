@@ -37,6 +37,8 @@ gem 'feedjira'
 gem 'haml'
 gem 'bootstrap-sass'
 # gem 'will_paginate', '~> 3.0.6'
+gem 'carrierwave'
+
 
 gem 'rails_12factor', group: :production
 # Use ActiveModel has_secure_password

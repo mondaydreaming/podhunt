@@ -5,11 +5,14 @@ class CreatePodcasts < ActiveRecord::Migration
         t.text :feed_url
         t.text :author
         t.text :description
-        t.text :categories
-        t.text :image
-        t.text :last_modified
-        t.text :url
+        t.text :categories 
+        t.text :image 
+        t.text :url 
         t.text :entries
+        t.text :copyright 
+        t.text :subtitle 
+        t.text :language 
+        t.text :explicit 
         t.timestamps
         end
     end

@@ -4,9 +4,9 @@ class CreateEpisodes < ActiveRecord::Migration
         t.text :title
         t.date :published
         t.text :url
-        t.text :topics
         t.text :summary
         t.string :duration
+        t.text :subtitle
         t.integer :podcast_id
 
     end

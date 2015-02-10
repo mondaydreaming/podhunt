@@ -1,2 +1,4 @@
-<h3><%= button_to("Add podcast to collection", podcast_subscribe_path(@podcast.id)) %></h3>
+<% if @current_listener %>
+    <h3><%= button_to("Add podcast to collection", podcast_subscribe_path(@podcast.id)) %></h3>
+<% end %>
 <%= render "show" %>

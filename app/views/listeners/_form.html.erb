@@ -33,7 +33,9 @@
     <%= f.text_field :interests, :class => 'form-control' %>
 
     <%= f.label :image, "Profile photo"%>
-    <%= f.url_field :image, :class => 'form-control' %>
+    <%= f.file_field :image, :class => 'form-control' %>
+
+    <%= f.text_field :remote_image_url %>
 
     <%= f.label :password, "Password" %>
     <%= f.password_field :password, :class => 'form-control' %>

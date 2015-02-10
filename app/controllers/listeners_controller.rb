@@ -56,7 +56,7 @@ class ListenersController < ApplicationController
   private
 
   def listener_params
-    params.require(:listener).permit(:firstname, :lastname, :username, :password, :password_confirmation, :dob, :country, :email, :interests, :image)
+    params.require(:listener).permit(:firstname, :lastname, :username, :password, :password_confirmation, :dob, :country, :email, :interests, :image, :remote_image_url)
   end
 
 end

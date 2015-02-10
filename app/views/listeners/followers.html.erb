@@ -1,0 +1,7 @@
+<h3>Here <%= @listener.username %>'s followers</h3>
+
+<div>
+    <% @listeners.each do |listener| %>
+        <%= listener.username %>
+    <% end %>
+</div>

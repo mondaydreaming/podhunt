@@ -20,9 +20,8 @@
 
 <section class="stats">
     <% @listener ||= @current_listener %>    
-    <p> Followers: <%= @listener.followers.count %> </p>
-    <p> Following: <%= @listener.following.count %></p>
-    <!-- ideally have links that will show who the followers/ followed are-->
+    <p> <%= link_to("Followers: ", followers_listener_path) %><%= @listener.followers.count %> </p>
+    <p> <%= link_to("Following: ", following_listener_path) %><%= @listener.following.count %></p>
 </section>
 
 

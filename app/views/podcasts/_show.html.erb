@@ -4,7 +4,7 @@
 <p><em>Author: </em><%= @podcast.author %></p>
 <p><em>Description: </em><%= @podcast.description %></p>
 <% if @podcast.try(:categories) %>
-    <p><em>Categories: </em><%= @podcast.categories %></p>
+    <p><em>Categories: </em><%= @podcast.categories.join(', ') %></p>
     <% end %>
 </div>
 

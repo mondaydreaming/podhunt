@@ -7,21 +7,33 @@ class PodcastsController < ApplicationController
   end
 
   def create
-    urls = params[:feed_url]
-    @jirapodcast = Feedjira::Feed.fetch_and_parse urls
+    url = params[:feed_url]
+    xml = Feedjira::Feed.fetch_raw url
+    @jirapodcast = Feedjira::Feed.parse_with Feedjira::Parser::ITunesRSS, xml
 
-    # what happens the second time you search
-    @podcast = Podcast.create(:title => @jirapodcast.title, :feed_url => @jirapodcast.feed_url, :author => @jirapodcast.entries[0].author,
+    @podcast = Podcast.create(
+      :title => @jirapodcast.title, 
+      :feed_url => params[:feed_url], 
+      :author => @jirapodcast.entries[0].itunes_author,
       :description => @jirapodcast.description,
-      :last_modified => @jirapodcast.last_modified,
-      :url => @jirapodcast.url, :entries => @jirapodcast.entries)
+      :categories => @jirapodcast.itunes_categories,
+      :image => @jirapodcast.itunes_image,
+      :subtitle => @jirapodcast.itunes_subtitle,
+      :language => @jirapodcast.language,
+      :copyright => @jirapodcast.copyright,
+      :url => @jirapodcast.url, 
+      :entries => @jirapodcast.entries,
+      :explicit => @jirapodcast.itunes_explicit)
+
 
     @jirapodcast.entries.each do |ep|
       @podcast.episodes.create(
         :title => ep.title,
         :published => ep.published,
-        :url => ep.image,
-        :summary => ep.summary
+        :url => ep.enclosure_url,
+        :summary => ep.summary,
+        :duration => ep.itunes_duration,
+        :subtitle => ep.itunes_subtitle
         )
     end
   end
@@ -32,13 +44,14 @@ class PodcastsController < ApplicationController
     redirect_to podcast
   end
 
-  def new
-    urls = params[:feed_url]
-    @podcast = Feedjira::Feed.fetch_and_parse urls
-  end
+  # def new
+  #   urls = params[:feed_url]
+  #   @podcast = Feedjira::Feed.fetch_and_parse urls
+  # end
 
   def show
     @podcast = Podcast.find params[:id]
+    
   end
 
   def destroy
@@ -49,7 +62,7 @@ class PodcastsController < ApplicationController
 
   private
   def podcast_params
-    params.require(:podcast).permit(:title, :published, :feed_url, :author, :description, :categories, :entries)
+    params.require(:podcast).permit(:title, :feed_url, :author, :description, :categories, :image, :url, :entries, :copyright, :subtitles, :language, :explicit)
   end
 
 end

@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   def index
     @podcast = Podcast.find params[:podcast_id]
-
   end
 
   def create
@@ -12,21 +11,7 @@ class MessagesController < ApplicationController
       redirect_to(podcast_messages_path(@podcast))
     else
       render :index
-
     end
-
-  end
-
-  def new
-  end
-
-  def edit
-  end
-
-  def show
-  end
-
-  def update
   end
 
   def destroy

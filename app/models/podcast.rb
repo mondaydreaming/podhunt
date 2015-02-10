@@ -21,4 +21,5 @@ class Podcast < ActiveRecord::Base
     has_and_belongs_to_many :listeners
     has_many :messages
     serialize :entries, Array
+    serialize :categories, Array
 end

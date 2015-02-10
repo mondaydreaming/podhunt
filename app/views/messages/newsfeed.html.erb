@@ -13,7 +13,6 @@
             <div>
                 <% @messages.each do |message| %>
                     <h4><%= message.listener.username %></h4>
-                    <p><%= message.podcast.title %></p>
                     <em><p>"<%= message.comment %>" - <%= message.created_at %></p></em>
                 <% end %>
             </div>

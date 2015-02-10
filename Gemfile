@@ -30,11 +30,12 @@ group :development do
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'meta_request'
-    gem 'bcrypt', '~> 3.1.7'
-    gem 'feedjira'
-    gem 'haml'
-    gem 'bootstrap-sass'
 end
+
+gem 'bcrypt', '~> 3.1.7'
+gem 'feedjira'
+gem 'haml'
+gem 'bootstrap-sass'
 
 gem 'rails_12factor', group: :production
 # Use ActiveModel has_secure_password

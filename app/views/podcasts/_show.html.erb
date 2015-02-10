@@ -1,10 +1,17 @@
 <h1> <%= @podcast.title %> </h1>
+<%= image_tag(@podcast.image) %>
 
 <div class="display-podcast">
-<p><em>Author: </em><%= @podcast.author %></p>
-<p><em>Description: </em><%= @podcast.description %></p>
-<% if @podcast.try(:categories) %>
-    <p><em>Categories: </em><%= @podcast.categories.join(', ') %></p>
+    <% if @podcast.try(:author) %>
+        <p><em>Author: </em><%= @podcast.author %></p>
+    <% end %>
+
+    <% if @podcast.try(:description) %>
+        <p><em>Description: </em><%= @podcast.description %></p>
+    <% end %>
+
+    <% if @podcast.try(:categories)%>
+        <p><em>Categories: </em><%= @podcast.categories.join(', ') %></p>
     <% end %>
 </div>
 

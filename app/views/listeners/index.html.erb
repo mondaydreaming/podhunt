@@ -2,11 +2,17 @@
 
 <h1>Welcome <%= @current_listener.try(:firstname) %></h1>
 
+<%= render :partial => "search" %>
+
 <ul>
     <% @listener.each do |listener| %>
-    <li><%= link_to(listener.username, listener_path(listener.id)) %></li>
-    <% listener.podcasts.each do |podcast| %>
-            <li><%= podcast.title %></li>
-            <% end %>
-    <% end %>
+    <li><%= link_to(listener.username, listener_path(listener.id)) %>
+    </li>
+            <ul>
+                <% listener.podcasts.each do |podcast| %>
+                        <li><%= podcast.title %></li>
+                        <% end %>
+            </ul>
+
+                <% end %>
 </ul>

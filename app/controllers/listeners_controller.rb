@@ -35,6 +35,10 @@ class ListenersController < ApplicationController
     @listener = @current_listener
   end
 
+  def search
+    redirect_to listeners_path
+  end
+
   def show
     @listener = Listener.find params[:id]
   end

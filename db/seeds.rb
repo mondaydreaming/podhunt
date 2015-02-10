@@ -15,9 +15,9 @@ e1 = Episode.create(:title => 'Moth one', :published=> '2014-01-01', :url => 'ht
 e2 = Episode.create(:title => 'This American Life one', :published=> '2014-01-02', :url => 'http://feeds.thisamericanlife.org/talpodcast', :topics => 'topic1', :summary => 'This is a summary of this American Life episode one', :duration => '58:00')
 e3 = Episode.create(:title => 'Serial one', :published=> '2014-01-05', :url => 'http://feeds.serialpodcast.org/serialpodcast', :topics => 'topic1', :summary => 'This is a summary of Serial episode one', :duration => '40:00')
 
-m1 = Message.create(:comment => "This is my favourite podcast", :podcast_id => "1")
-m2 = Message.create(:comment => "I hate this podcast and evey episode in it" , :podcast_id => "2")
-m3 = Message.create(:comment => "comment paragraph blah blah blah " , :podcast_id => "3")
+m1 = Message.create(:comment => "This is my favourite podcast", :listener_id => l1.id)
+m2 = Message.create(:comment => "I hate this podcast and evey episode in it" , :listener_id => l2.id)
+m3 = Message.create(:comment => "comment paragraph blah blah blah " , :listener_id => l3.id)
 
 #associate podcasts and listeners
 p1.listeners << l1
@@ -29,7 +29,7 @@ p1.episodes << e1
 p2.episodes << e2
 p3.episodes << e3
 
-# associate messages and episodes
+# associate messages and podcasts
 p1.messages << m1
 p2.messages << m2
 p3.messages << m3

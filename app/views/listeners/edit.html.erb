@@ -1,3 +1,8 @@
 <h1>Edit your personal details</h1>
 
 <%= render :partial => 'form' %>
+<br>
+
+<div>
+    <%= button_to("Delete account", @current_listener, :method => "delete", :data => {:confirm => "Are you sure?"}, class: "btn btn-danger")%>
+</div>

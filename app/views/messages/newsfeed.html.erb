@@ -1,0 +1,22 @@
+<div>
+    <% if @current_listener %>
+        <h2>This is what your friends have to say about the latest podcasts they've been listening to</h2>
+            <div>
+                <% @messages.each do |message| %>
+                    <h4><%= message.listener.username %></h4>
+                    <p><%= message.podcast.title %></p>
+                    <em><p>"<%= message.comment %>" - <%= message.created_at %></p></em>
+                <% end %>
+            </div>
+    <% else %>
+        <h2>This is the latest from our community</h2>
+            <div>
+                <% @messages.each do |message| %>
+                    <h4><%= message.listener.username %></h4>
+                    <p><%= message.podcast.title %></p>
+                    <em><p>"<%= message.comment %>" - <%= message.created_at %></p></em>
+                <% end %>
+            </div>
+    <% end %>
+</div>
+

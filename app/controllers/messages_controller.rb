@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def index
     @podcast = Podcast.find params[:podcast_id]
+
   end
 
   def create
@@ -11,6 +12,7 @@ class MessagesController < ApplicationController
       redirect_to(podcast_messages_path(@podcast))
     else
       render :index
+
     end
 
   end
@@ -31,6 +33,13 @@ class MessagesController < ApplicationController
     message = Message.find params[:id]
     message.destroy
     redirect_to(podcast_messages_path)
+  end
 
+  def newsfeed
+    if @current_listener
+      @messages = Message.where(:listener_id => @current_listener.following_ids)
+    else
+      @messages = Message.all
+    end
   end
 end

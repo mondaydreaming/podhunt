@@ -1,6 +1,6 @@
 <h2><%= @listener.username %></h2>
 
-    <% if @current_listener.present?%>
+    <% if @current_listener.present? && @current_listener != @listener%>
 
         <% if @current_listener.following?(@listener) %>
 
@@ -16,9 +16,6 @@
               <%= f.submit "Follow", class: "btn btn-primary" %>
             <% end %>
         <% end %>
-
-        <% else %>
-    <p>You need to log in to follow other listeners</p>
     <% end %>
 
 <section class="stats">

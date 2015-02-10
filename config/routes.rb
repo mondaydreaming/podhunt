@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
   resources :users
 
-  root :to => 'listeners#index'
+  root :to => 'messages#newsfeed'
   resources :listeners do
     member do
       get :following, :followers
     end
   end
 
+  get '/search/listeners' => 'listeners#search', :as => "search_listeners"
+
   resources :podcasts do
     resources :messages
   end
 
-  get '/search' => 'podcasts#search', :as => "search_podcasts"
+  get '/search/podcasts' => 'podcasts#search', :as => "search_podcasts"
   post '/podcasts/:id/subscribe' => 'podcasts#subscribe', :as => "podcast_subscribe"
 
   get '/login' => 'session#new'

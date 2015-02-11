@@ -31,15 +31,14 @@
 
     <%= f.label :interests, "Interests (please separate using commas)" %>
     <%= f.text_field :interests, :class => 'form-control' %>
-
+    
     <%= f.label :image, "Profile photo"%>
     <%= f.file_field :image, :class => 'form-control' %>
-
     <%= f.text_field :remote_image_url %>
-
+    <br>
     <%= f.label :password, "Password" %>
     <%= f.password_field :password, :class => 'form-control' %>
-
+    
     <%= f.label :password_confirmation, "Confirm password" %>
     <%= f.password_field :password_confirmation, :class => 'form-control' %>
 <br>

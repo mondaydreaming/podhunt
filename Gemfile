@@ -38,6 +38,8 @@ gem 'haml'
 gem 'bootstrap-sass'
 # gem 'will_paginate', '~> 3.0.6'
 gem 'carrierwave'
+gem 'cloudinary'
+# gem 'mini_magick'
 
 
 gem 'rails_12factor', group: :production

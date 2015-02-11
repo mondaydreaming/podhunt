@@ -3,13 +3,13 @@ class ListenersController < ApplicationController
   def following
     @title = "Following"
     @listener  = Listener.find(params[:id])
-    @listeners = @current_listener.following
+    @listeners = @listener.following
   end
 
   def followers
     @title = "Followers"
     @listener  = Listener.find(params[:id])
-    @listeners = @current_listener.followers
+    @listeners = @listener.followers
   end
 
   def index
@@ -19,6 +19,7 @@ class ListenersController < ApplicationController
   def create
     @listener = Listener.create listener_params
     if @listener.save
+      session[:listener_id] = @listener.id
       redirect_to root_path
     else
       render :new

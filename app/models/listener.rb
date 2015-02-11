@@ -17,7 +17,7 @@
 #
 
 class Listener < ActiveRecord::Base
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :image, AvatarUploader
 
   has_secure_password
   has_and_belongs_to_many :podcasts

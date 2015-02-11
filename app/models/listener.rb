@@ -46,4 +46,9 @@ class Listener < ActiveRecord::Base
   def following?(other_listener)
     following.include?(other_listener)
   end
+
+  def self.search(query)
+    where("username ilike ?", "%#{query}%") 
+  end
+
 end

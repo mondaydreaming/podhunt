@@ -1,8 +1,6 @@
-<!-- This is the equivalent of a homepage -->
+
 
 <h1>Welcome <%= @current_listener.try(:firstname) %></h1>
-
-<%= render :partial => "search" %>
 
 <ul>
     <% @listener.each do |listener| %>

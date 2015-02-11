@@ -10,6 +10,10 @@
 <body>
 <nav>
     <ul><%== nav_menu %></ul>
+    <%= form_tag(search_listeners_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Listeners" %>
+      <%= submit_tag "Search", :name => nil %>
+    <% end %>
 </nav>
 
 <div class="container">

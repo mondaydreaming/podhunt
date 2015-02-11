@@ -1,5 +1,11 @@
 <%= form_tag podcast_messages_path do %>
-    <%= label_tag "What did you think of the latest podcast?" %>
-    <%= text_area_tag :comment, nil %>
-    <%= submit_tag %>
+    <h3><%= label_tag "What did you think of the latest podcast?" %></h3>
+    <div class="row">
+        <div class="col-md-10">
+            <%= text_area_tag :comment, nil, class: "form-control" %>
+        </div>
+        <div class="col-md-2">
+            <%= submit_tag "Share", class: "btn btn-success btn-lg" %>
+        </div>
+    </div>
 <% end %>

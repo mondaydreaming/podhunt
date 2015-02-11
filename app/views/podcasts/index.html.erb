@@ -1,12 +1,30 @@
-<h1>My playlist</h1>
-<ul>
-    <% @podcasts.each do |podcast| %>
-    <li>
-        <%= link_to(podcast.title, podcast_path(podcast.id)) %> <%= button_to "Remove from playlist", podcast, :method => "delete", :data => { :confirm => "Are you sure?"} %>
-        <br>
-        <%= podcast.description %>
-        <br>
-        <br>
-    </li>
-    <% end %>
-</ul>
+<div class="jumbotron">
+    <h1>My playlist</h1>
+    <ul class= "list-unstyled">
+        <% @podcasts.each do |podcast| %>
+        <li>
+            <div class="row">
+                <div class="col-md-10">
+                    <h2><%= link_to(podcast.title, podcast_path(podcast.id)) %> </h2>
+                </div>
+                <div class="col-md-offset-2"></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2 thumbnail">
+                    <%= image_tag(podcast.image) %>
+                </div>
+
+                <div class="col-md-6 col-md-offset-1">
+                    <%= podcast.description %>
+                </div>
+                <div class="col-md-1 col-md-offset-1">
+                    <%= button_to "Remove from playlist", podcast, :method => "delete", :data => { :confirm => "Are you sure?"}, class: "btn btn-warning" %>
+                </div>
+            </div> 
+            <br>
+        </li>
+        <% end %>
+    </ul>
+
+</div>

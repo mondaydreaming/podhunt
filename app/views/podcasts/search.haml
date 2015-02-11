@@ -18,5 +18,5 @@
                 %p= podcast.description
                 %p
                 = link_to("View", podcast_path(podcast), class: "btn btn-primary")
-                - if @current_listener
-                    = link_to("Subscribe", podcast_subscribe_path(podcast), class: "btn btn-default")
+                - if @current_listener && @current_listener.podcasts.include?(podcast) == false
+                    = link_to("Subscribe", podcast_subscribe_path(podcast), :method => :post,class: "btn btn-default")

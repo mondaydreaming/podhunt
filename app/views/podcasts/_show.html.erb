@@ -1,26 +1,45 @@
-<h1> <%= @podcast.title %> </h1>
-<%= image_tag(@podcast.image) %>
+<div class="jumbotron">
+    <h1> <%= @podcast.title %> </h1>
+    <div class="row">
+        <div class="col-md-3">
+            <%= image_tag(@podcast.image, class: "img-thumbnail") %>
+            <%= @podcast.subtitle %>
+        </div>
+        <div class="col-md-9">
+            <div class="display-podcast">
+                <% if @podcast.try(:author) %>
+                    <p><em>Author: </em><%= @podcast.author %></p>
+                <% end %>
 
-<div class="display-podcast">
-    <% if @podcast.try(:author) %>
-        <p><em>Author: </em><%= @podcast.author %></p>
-    <% end %>
+                <% if @podcast.try(:language) %>
+                    <p><em>Language: </em><%= @podcast.language %></p>
+                <% end %>
 
-    <% if @podcast.try(:description) %>
-        <p><em>Description: </em><%= @podcast.description %></p>
-    <% end %>
+                <% if @podcast.try(:categories)%>
+                    <p><em>Categories: </em><%= @podcast.categories.join(', ') %></p>
+                <% end %>
 
-    <% if @podcast.try(:categories)%>
-        <p><em>Categories: </em><%= @podcast.categories.join(', ') %></p>
-    <% end %>
+                <% if @podcast.try(:description) %>
+                    <p><em>Description: </em>
+                    <br>
+                    <%= @podcast.description %></p>
+                <% end %>
+
+            </div>
+
+            <h3><%= link_to("Join the conversation",podcast_messages_path(@podcast.id)) %></h3>
+        </div>
+    </div>
+
 </div>
 
-<h4><%= link_to("Join the conversation",podcast_messages_path(@podcast.id)) %></h4>
-
-<h3>Latest episodes</h3>
+<h2>Latest episodes</h2>
 <% @podcast.episodes.each do |ep| %>
     <h4><%= ep.title %></h4>
+    <p><%= ep.published %></p>
     <audio src="<%= ep.url %>" controls ></audio>
     <p><%== ep.summary %></p>
+    <br>
 <% end %>
 </div>
+

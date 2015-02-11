@@ -1,11 +1,13 @@
-%h2= flash[:error] if flash[:error].present?
+.jumbotron
+    %h2= flash[:error] if flash[:error].present?
+    %h1 Log in
+    .row
+    .col-md-12
+    = form_tag login_path do
+        = label_tag :username
+        = text_field_tag :username, nil, :autofocus =>true
 
-%h1 Log in
-= form_tag login_path do
-    = label_tag :username
-    = text_field_tag :username, nil, :autofocus =>true
+        = label_tag :password
+        = password_field_tag :password
 
-    = label_tag :password
-    = password_field_tag :password
-
-    = submit_tag "Log in"
+        = submit_tag "Log in", class: "btn btn-primary"

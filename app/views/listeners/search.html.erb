@@ -1,0 +1,8 @@
+Here are the results
+
+<ul>
+    <% @listeners.each do |listener| %>
+        <ul><%= link_to(listener.username, listener_path(listener)) %></ul>
+    <% end %>
+</ul>
+

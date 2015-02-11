@@ -1,0 +1,22 @@
+.jumbotron
+    %h1 Search for a new podcast
+    = form_tag podcasts_path do
+        = label_tag "Enter Podcast RSS URL"
+        .row
+            .col-md-11
+                = text_field_tag :feed_url, nil, class: "form-control"
+            .col-md-1
+                = submit_tag "Search", class: "btn btn-primary"
+                
+.row
+-@podcasts.each do |podcast|
+    .col-sm-6.col-md-4
+        .thumbnail
+            =image_tag(podcast.image)
+            .caption
+                %h3= podcast.title
+                %p= podcast.description
+                %p
+                = link_to("View", podcast_path(podcast), class: "btn btn-primary")
+                - if @current_listener
+                    = link_to("Subscribe", podcast_subscribe_path(podcast), class: "btn btn-default")

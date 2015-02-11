@@ -1,0 +1,12 @@
+.jumbotron
+  %h1 Browse listener playlists
+  %ul.list-unstyled
+    - @listener.each do |listener|
+      / %li= image_tag(listener.image, class: "img-circle")
+      %li.h3= link_to(listener.username, listener_path(listener.id))
+      %ul
+        - listener.podcasts.each do |podcast|
+          %li.h4= link_to(podcast.title, podcast_path(podcast))
+
+
+

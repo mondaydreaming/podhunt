@@ -1,0 +1,28 @@
+.jumbotron
+  %h1 Welcome #{@current_listener.try(:firstname)}
+  - if @current_listener
+    %h2 Newsfeed
+    %div
+      - @messages.order("created_at desc").each do |message|
+        .row
+          .col-md-2
+            = image_tag(message.podcast.image, class: "img-responsive img-thumbnail", alt: "Responsive image")
+          .col-md-10
+            %h3= link_to(message.listener.username,listener_path(message.listener))
+            %p= link_to(message.podcast.title, podcast_path(message.podcast))
+            %em
+              %p
+                "#{message.comment}" - #{message.created_at}
+  - else
+    %h2 Newsfeed
+    %div
+      - @messages.order("created_at desc").each do |message|
+        .row
+          .col-md-2
+            = image_tag(message.podcast.image, class: "img-responsive img-thumbnail", alt: "Responsive image")
+          .col-md-10
+            %h3= link_to(message.listener.username, listener_path(message.listener))
+            %p= link_to(message.podcast.title, podcast_path(message.podcast))
+            %em
+              %p
+                "#{message.comment}" - #{message.created_at}

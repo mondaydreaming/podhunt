@@ -4,6 +4,7 @@ class PodcastsController < ApplicationController
   end
 
   def search
+    @podcasts = Podcast.all
   end
 
   def create

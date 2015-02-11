@@ -1,5 +1,3 @@
-
-
 <% if @listener.errors.any? %>
     <ol>
         <% @listener.errors.full_messages.each do |msg|%>
@@ -33,15 +31,16 @@
     <%= f.text_field :interests, :class => 'form-control' %>
     
     <%= f.label :image, "Profile photo"%>
-    <%= f.file_field :image, :class => 'form-control' %>
-    <%= f.text_field :remote_image_url %>
-    <br>
+    <%= f.file_field :image, :type => "file", :id =>"exampleInputFile" %>
+    <p class="help-block"> or provide image url below </p>
+    <%= f.text_field :remote_image_url, :class => 'form-control' %>
+    
     <%= f.label :password, "Password" %>
     <%= f.password_field :password, :class => 'form-control' %>
     
     <%= f.label :password_confirmation, "Confirm password" %>
     <%= f.password_field :password_confirmation, :class => 'form-control' %>
-<br>
-    <%= f.submit %>
-
+<br>   
+    <%= f.submit class: "btn btn-primary" %>
 <% end %>
+<br>

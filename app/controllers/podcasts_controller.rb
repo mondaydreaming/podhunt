@@ -10,7 +10,7 @@ class PodcastsController < ApplicationController
   def create
     currentlibrary =  Podcast.all
 
-    if  currentlibrary.where(:feed_url => params[:feed_url])
+    if  !currentlibrary.where(:feed_url => params[:feed_url]).empty?
         @podcast = Podcast.find_by(
         :feed_url => params[:feed_url])
     else    

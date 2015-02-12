@@ -12,6 +12,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+
 }
 
 .img-med {
@@ -20,6 +21,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    
 }
 
 .sticky {
@@ -38,3 +40,35 @@ body > .container { height: auto; min-height: 100%; }
     color: inherit;
     background-color: rgba(2, 132, 130, 0.2);
 }
+
+
+.row-custom {
+ -moz-column-width: 20em;
+ -webkit-column-width: 20em;
+ -moz-column-gap: 10px;
+ -webkit-column-gap:10px; 
+}
+
+.row-custom > .col-lg-3 {
+ display: inline-block;
+ padding: 0;
+ margin: 10px;
+ width:  100%; 
+ float:none;
+}
+
+.img-responsive {
+  border:0px solid #999;
+}
+
+.playlist-org li {
+    display: inline;
+}
+
+
+
+
+
+
+
+

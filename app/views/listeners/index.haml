@@ -5,8 +5,8 @@
       %li.h3= link_to(listener.username, listener_path(listener.id))
       %li= link_to(image_tag(listener.image, class: "img-med"),listener_path(listener))
       %li
-        - listener.podcasts.each do |podcast|
-          %li.h4= link_to(image_tag(podcast.image, class: "img-med"),podcast_path(podcast))
+        - listener.podcasts.take(5).each do |podcast|
+          %li.h4= link_to(image_tag(podcast.image, class: "img-med img-thumbnail"),podcast_path(podcast))
 
 
 

@@ -1,11 +1,17 @@
-<%= form_tag podcast_messages_path do %>
-    <h3><%= label_tag "What did you think of the latest podcast?" %></h3>
-    <div class="row">
-        <div class="col-md-10">
-            <%= text_area_tag :comment, nil, class: "form-control" %>
+
+
+<% if @current_listener %>
+    <%= form_tag podcast_messages_path do %>
+        <h3><%= label_tag "What did you think of the latest episode?" %></h3>
+        <div class="row">
+            <div class="col-md-10">
+                <%= text_area_tag :comment, nil, class: "form-control" %>
+            </div>
+            <div class="col-md-2">
+                <%= submit_tag "Share", class: "btn btn-success btn-lg" %>
+            </div>
         </div>
-        <div class="col-md-2">
-            <%= submit_tag "Share", class: "btn btn-success btn-lg" %>
-        </div>
-    </div>
+    <% end %>
+<% else %>
+    <h3>Sorry, you have to <%= link_to("login", login_path) %> or <%= link_to("sign up", new_listener_path) %> to run your mouth off </h3>
 <% end %>

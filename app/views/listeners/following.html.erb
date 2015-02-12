@@ -1,7 +1,17 @@
-<h3>Here are the listeners that <%= @listener.username %> follows</h3>
+<div class="jumbotron">
+    <h1><%= link_to(@listener.username,listener_path(@listener)) %> follows</h1>
 
-<div>
-    <% @listeners.each do |listener| %>
-        <%= listener.username %>
-    <% end %>
+    <div>
+        <% @listeners.each do |listener| %>
+            <div class="row">
+                <div class="col-md-2">
+                    <%= image_tag(listener.image, class: "img-thumbnail img-tiny") %>
+                </div>
+                <div class="col-md-10">
+                    <h4> <%= link_to(listener.username, listener_path(listener)) %></h4>
+                    <%= listener.interests %>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>

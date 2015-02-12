@@ -8,34 +8,41 @@ class PodcastsController < ApplicationController
   end
 
   def create
-    url = params[:feed_url]
-    xml = Feedjira::Feed.fetch_raw url
-    @jirapodcast = Feedjira::Feed.parse_with Feedjira::Parser::ITunesRSS, xml
+    currentlibrary =  Podcast.all
 
-    @podcast = Podcast.create(
-      :title => @jirapodcast.title, 
-      :feed_url => params[:feed_url], 
-      :author => @jirapodcast.entries[0].itunes_author,
-      :description => @jirapodcast.description,
-      :categories => @jirapodcast.itunes_categories,
-      :image => @jirapodcast.itunes_image,
-      :subtitle => @jirapodcast.itunes_subtitle,
-      :language => @jirapodcast.language,
-      :copyright => @jirapodcast.copyright,
-      :url => @jirapodcast.url, 
-      :entries => @jirapodcast.entries,
-      :explicit => @jirapodcast.itunes_explicit)
+    if  currentlibrary.where(:feed_url => params[:feed_url])
+        @podcast = Podcast.find_by(
+        :feed_url => params[:feed_url])
+    else    
+      url = params[:feed_url]
+      xml = Feedjira::Feed.fetch_raw url
+      @jirapodcast = Feedjira::Feed.parse_with Feedjira::Parser::ITunesRSS, xml    
+
+      @podcast = Podcast.create(
+        :title => @jirapodcast.title, 
+        :feed_url => params[:feed_url], 
+        :author => @jirapodcast.entries[0].itunes_author,
+        :description => @jirapodcast.description,
+        :categories => @jirapodcast.itunes_categories,
+        :image => @jirapodcast.itunes_image,
+        :subtitle => @jirapodcast.itunes_subtitle,
+        :language => @jirapodcast.language,
+        :copyright => @jirapodcast.copyright,
+        :url => @jirapodcast.url, 
+        :entries => @jirapodcast.entries,
+        :explicit => @jirapodcast.itunes_explicit)
 
 
-    @jirapodcast.entries.each do |ep|
-      @podcast.episodes.create(
-        :title => ep.title,
-        :published => ep.published,
-        :url => ep.enclosure_url,
-        :summary => ep.summary,
-        :duration => ep.itunes_duration,
-        :subtitle => ep.itunes_subtitle
-        )
+      @jirapodcast.entries.each do |ep|
+        @podcast.episodes.create(
+          :title => ep.title,
+          :published => ep.published,
+          :url => ep.enclosure_url,
+          :summary => ep.summary,
+          :duration => ep.itunes_duration,
+          :subtitle => ep.itunes_subtitle
+          )
+      end
     end
   end
 
@@ -44,11 +51,6 @@ class PodcastsController < ApplicationController
     @current_listener.podcasts << podcast
     redirect_to podcast
   end
-
-  # def new
-  #   urls = params[:feed_url]
-  #   @podcast = Feedjira::Feed.fetch_and_parse urls
-  # end
 
   def show
     @podcast = Podcast.find params[:id]

@@ -16,8 +16,8 @@
 }
 
 .img-med {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -58,7 +58,7 @@ body > .container { height: auto; min-height: 100%; }
 }
 
 .img-responsive {
-  border:0px solid #999;
+  border:0px solid #ddd;
 }
 
 .playlist-org li {

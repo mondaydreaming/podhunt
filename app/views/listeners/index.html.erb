@@ -1,0 +1,38 @@
+<div class="jumbotron">
+    <h1>Browse listener playlists</h1>
+    <ul class="list-unstyled">
+        <% @listener.each do |listener| %>
+        <div class="row">
+            <div class="col-md-12">
+                <li class="h3">
+                    <%= link_to(listener.username, listener_path(listener.id)) %>
+                </li>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+            <ul class="list-unstyled playlist-org">
+                <li>
+                    <%= link_to(image_tag(listener.image, class: "img-med"),listener_path(listener)) %>
+                </li>
+            </ul>
+            <ul class="list-unstyled playlist-org">
+                <li>
+                    <%#= link_to(image_tag(listener.image, class: "img-med"),listener_path(listener)) %>
+                </li>
+            </ul>
+            </div>
+            <div class="col-md-10">
+                <ul class="list-unstyled playlist-org">
+                    <% listener.podcasts.each do |podcast| %>
+                        <li class="h4">
+                            <%= link_to(image_tag(podcast.image, class: "img-med"),podcast_path(podcast)) %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+        <% end %>
+    </ul>
+</div>

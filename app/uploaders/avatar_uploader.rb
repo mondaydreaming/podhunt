@@ -7,7 +7,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  include Cloundinary::CarrierWave if Rails.env.production?
+  include Cloudinary::CarrierWave if Rails.env.production?
   storage :file if Rails.env.development?
   # storage :fog
 

@@ -14,6 +14,7 @@
 #  image           :text
 #  created_at      :datetime
 #  updated_at      :datetime
+#  avatar          :string
 #
 
 class Listener < ActiveRecord::Base

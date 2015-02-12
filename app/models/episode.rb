@@ -6,9 +6,9 @@
 #  title      :text
 #  published  :date
 #  url        :text
-#  topics     :text
 #  summary    :text
 #  duration   :string
+#  subtitle   :text
 #  podcast_id :integer
 #
 

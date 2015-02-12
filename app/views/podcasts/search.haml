@@ -20,5 +20,5 @@
                     = link_to("View", podcast_path(podcast), class: "btn btn-primary")
                     - if @current_listener && @current_listener.podcasts.include?(podcast) == false
                         = link_to("Subscribe", podcast_subscribe_path(podcast), :method => :post,class: "btn btn-default")
-                    - else @current_listener && @current_listener.podcasts.include?(podcast) == true
+                    - elsif @current_listener && @current_listener.podcasts.include?(podcast) == true
                         = link_to("Unsubscribe", podcast, :method => "delete", :data => { :confirm => "Are you sure?"}, class: "btn btn-warning")

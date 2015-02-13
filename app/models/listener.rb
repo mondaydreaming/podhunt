@@ -36,7 +36,7 @@ class Listener < ActiveRecord::Base
   #validations
   validates :firstname, presence: true
   validates :lastname, presence: true
-  validates :username, presence: true, uniqueness: true, format: { with: /^[a-zA-Z]+[a-zA-Z\d]*$/}
+  validates :username, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/}
   validates :email, presence: true, uniqueness: true
   validates :interests, length: { maximum: 500 }
 

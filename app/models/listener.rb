@@ -33,6 +33,22 @@ class Listener < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  #validations
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :interests, length: { maximum: 500 }
+
+  validate :only_upload_or_url_for_image
+
+  def only_upload_or_url_for_image
+    if image.present? && remote_image_url.present?
+      errors.add(:image, "should only be upload or url, not both")
+    end
+  end
+
+
       # Follows a listener.
   def follow(other_listener)
     active_relationships.create(followed_id: other_listener.id)

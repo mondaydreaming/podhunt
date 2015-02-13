@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
 
-  root :to => 'messages#newsfeed'
+  root :to => 'podcasts#search'
   resources :listeners do
     member do
       get :following, :followers
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get '/search/listeners' => 'listeners#search', :as => "search_listeners"
+  get '/messages/newsfeed' => 'messages#newsfeed', :as =>"messages_newsfeed"
 
   resources :podcasts do
     resources :messages #, :except => :create

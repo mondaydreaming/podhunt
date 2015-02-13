@@ -49,7 +49,7 @@ class PodcastsController < ApplicationController
   def subscribe
     podcast = Podcast.find params[:id]
     @current_listener.podcasts << podcast
-    redirect_to podcast
+    redirect_to search_podcasts_path
   end
 
   def show

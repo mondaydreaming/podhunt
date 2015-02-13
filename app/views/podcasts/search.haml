@@ -1,5 +1,6 @@
 .jumbotron
-    %h1 Search for a new podcast
+    %h1 Welcome #{link_to(@current_listener.firstname,listener_path(@current_listener))}
+    %h2 Search for a new podcast
     = form_tag podcasts_path do
         = label_tag "Enter Podcast RSS URL"
         .row
@@ -19,6 +20,6 @@
                     %p
                     = link_to("View", podcast_path(podcast), class: "btn btn-primary")
                     - if @current_listener && @current_listener.podcasts.include?(podcast) == false
-                        = link_to("Subscribe", podcast_subscribe_path(podcast), :method => :post,class: "btn btn-default")
+                        = link_to("Subscribe", podcast_subscribe_path(podcast), :method => :post,class: "btn btn-success")
                     - elsif @current_listener && @current_listener.podcasts.include?(podcast) == true
                         = link_to("Unsubscribe", podcast, :method => "delete", :data => { :confirm => "Are you sure?"}, class: "btn btn-warning")

@@ -1,7 +1,7 @@
 .jumbotron
   - if @current_listener
-    %h1 Welcome #{link_to(@current_listener.firstname,listener_path(@current_listener))}
-    %h2 Newsfeed
+    %h1 Newsfeed
+    %h2 I heard it on the grapevine...
     %div
       - @messages.order("created_at desc").each do |message|
         .row

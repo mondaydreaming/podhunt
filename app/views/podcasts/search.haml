@@ -1,5 +1,8 @@
 .jumbotron
-    %h1 Welcome #{link_to(@current_listener.firstname,listener_path(@current_listener))}
+    - if @current_listener.present?
+        %h1 Welcome #{link_to(@current_listener.firstname,listener_path(@current_listener))}
+    - else
+        %h1 Welcome 
     %h2 Search for a new podcast
     = form_tag podcasts_path do
         = label_tag "Enter Podcast RSS URL"

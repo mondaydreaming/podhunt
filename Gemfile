@@ -32,6 +32,7 @@ group :development do
     gem 'meta_request'
 end
 
+gem 'bootstrap-material-design'
 gem 'bcrypt', '~> 3.1.7'
 gem 'feedjira'
 gem 'haml'

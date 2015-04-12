@@ -1,3 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Monoton);
+
+#title-style {
+    font-family: 'Monoton';
+}
+
 .img-half-page {
     width: 300px;
     height: 300px;
@@ -38,7 +44,7 @@ body > .container { height: auto; min-height: 100%; }
 .jumbotron {
     margin-bottom: 30px;
     color: inherit;
-    background-color: rgba(2, 132, 130, 0.2);
+    background-color: #F06292;
 }
 
 
@@ -64,9 +70,6 @@ body > .container { height: auto; min-height: 100%; }
 .playlist-org li {
     display: inline;
 }
-
-
-
 
 
 

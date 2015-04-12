@@ -32,6 +32,7 @@ group :development do
     gem 'meta_request'
 end
 
+gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'bootstrap-material-design'
 gem 'bcrypt', '~> 3.1.7'
 gem 'feedjira'
